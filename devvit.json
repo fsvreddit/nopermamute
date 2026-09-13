@@ -1,0 +1,62 @@
+{
+    "$schema": "https://developers.reddit.com/schema/config-file.v1.json",
+    "dev": {
+        "subreddit": "fsvsandbox"
+    },
+    "name": "nopermamute",
+    "permissions": {
+        "reddit": true
+    },
+    "scripts": {
+        "build": "vite build",
+        "dev": "vite build --watch"
+    },
+    "server": {
+        "dir": "dist/server",
+        "entry": "index.cjs"
+    },
+    "settings": {
+        "subreddit": {
+            "enableApp": {
+                "type": "boolean",
+                "label": "Enable App",
+                "helpText": "If enabled, the app will be active in the subreddit.",
+                "defaultValue": true
+            },
+            "muteDuration": {
+                "type": "number",
+                "label": "Number of days to treat a permanent mute as",
+                "helpText": "Minimum 28, maximum 56",
+                "defaultValue": 28,
+                "validationEndpoint": "/internal/validators/mute-duration-within-range"
+            },
+            "notifyOnUpdates": {
+                "type": "boolean",
+                "label": "Notify on Updates",
+                "helpText": "If enabled, Automod Neo will send a Modmail notification to the subreddit when a new version is available.",
+                "defaultValue": true
+            }
+        }
+    },
+    "triggers": {
+        "onAppInstall": "/internal/triggers/on-app-install",
+        "onAppUpgrade": "/internal/triggers/on-app-upgrade",
+        "onModAction": "/internal/triggers/on-mod-action"
+    },
+    "scheduler": {
+        "tasks": {
+            "handleInitialMutePopulation": {
+                "endpoint": "/internal/tasks/handle-initial-mute-population"
+            },
+            "handleUnmuter": {
+                "endpoint": "/internal/tasks/handle-unmuter"
+            },
+            "checkForUpdates": {
+                "endpoint": "/internal/tasks/check-for-updates"
+            }
+        }
+    },
+    "marketingAssets": {
+        "icon": "assets/icon.png"
+    }
+}
