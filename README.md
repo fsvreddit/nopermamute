@@ -8,6 +8,12 @@ Configurable options:
 * Number of days to treat a permanent mute as: The number of days (28-56) to treat a permanent mute as. By default this is 28.
 * Notify on Update: Receive a modmail notification if this app receives updates (bug fixes etc.). Notifications will only be sent in case of feature updates or important bug fixes.
 
+## Version History
+
+### v1.0.1
+
+* Fixed wording in app settings
+
 ## Source code
 
 No Permamute is open source under the BSD three-clause license. [You can find the source code on Github](https://github.com/fsvreddit/nopermamute).
